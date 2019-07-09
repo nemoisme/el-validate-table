@@ -10,7 +10,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/nemoisme/el-validate-table/pulls)
 [![Automated Release Notes by gren](https://img.shields.io/badge/%F0%9F%A4%96-release%20notes-00B2EE.svg)](https://github-tools.github.io/github-release-notes/)
 
-![07月-09-2019](./assets/demo2.png)
+![07月-09-2019](./assets/demo2.jpg)
 
 ## Table of Contents
 
@@ -185,10 +185,11 @@ export default {
 
 ## Attributes
 
-| params  | explain                                                    | type  |
-| ------- | ---------------------------------------------------------- | ----- |
-| data    | 匹配的数据，与 element-ui,el-table 用法相同                | Array |
-| columns | 列配置，支持 el-table-column 所有的配置项，格外扩展 config | Array |
+| params                   | explain                                                            | type                                     |
+| ------------------------ | ------------------------------------------------------------------ | ---------------------------------------- |
+| data                     | 匹配的数据，与 element-ui,el-table 用法相同                        | Array                                    |
+| columns                  | 列配置，支持 el-table-column 所有的配置项，格外扩展 config         | Array                                    |
+| columns:item 下的 config | vnode 配置项，type->tag,rules->校验规则,other 类似 render 的配置项 | Function({type,rules,event,style,attrs}) |
 
 ## Reference
 
