@@ -10,7 +10,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/nemoisme/el-validate-table/pulls)
 [![Automated Release Notes by gren](https://img.shields.io/badge/%F0%9F%A4%96-release%20notes-00B2EE.svg)](https://github-tools.github.io/github-release-notes/)
 
-![07月-09-2019](./assets/demo1.png)
+![07月-09-2019](./assets/demo2.png)
 
 ## Table of Contents
 
@@ -51,12 +51,12 @@
 ```vue
 <template>
   <div class="validate-table-test">
-      <el-validate-table :columns="columns" :data="data"></el-validate-table>
+    <el-validate-table :columns="columns" :data="data"></el-validate-table>
   </div>
 </template>
 <script>
 export default {
-  name: 'demo',
+  name: 'validate-table-test',
   data() {
     return {
       data: [
@@ -88,21 +88,7 @@ export default {
         {
           prop: 'date',
           label: '日期',
-          isMerge: true,
-          config: {
-            type: 'el-date-picker',
-            style: {
-              width: '80%',
-              display: 'block'
-            },
-            rules: [
-              {
-                required: true,
-                message: '请选择时间',
-                trigger: 'blur'
-              }
-            ]
-          }
+          isMerge: true
         },
         {
           prop: 'name',
@@ -119,29 +105,31 @@ export default {
             {
               prop: 'a',
               label: '省',
-              config: {
-                type: 'el-select',
-                rules: [
-                  {
-                    required: true,
-                    message: '不能为空',
-                    trigger: 'change'
-                  }
-                ],
-                options: [
-                  {
-                    value: '',
-                    label: '全部'
-                  },
-                  {
-                    value: '1',
-                    label: '湖南'
-                  },
-                  {
-                    value: '2',
-                    label: '广东'
-                  }
-                ]
+              config: params => {
+                return {
+                  type: 'el-select',
+                  rules: [
+                    {
+                      required: true,
+                      message: '不能为空',
+                      trigger: 'change'
+                    }
+                  ],
+                  options: [
+                    {
+                      value: '',
+                      label: '全部'
+                    },
+                    {
+                      value: '1',
+                      label: '湖南'
+                    },
+                    {
+                      value: '2',
+                      label: '广东'
+                    }
+                  ]
+                }
               }
             },
             {
@@ -153,20 +141,25 @@ export default {
         {
           prop: 'old',
           label: '年龄',
-          config: {
-            type: 'el-input',
-            rules: [
-              {
-                required: true,
-                message: '年龄不能为空',
-                trigger: 'blur'
-              },
-              {
-                pattern: /^[1-9]\d*$/,
-                message: '只能填写正整数',
-                trigger: 'blur'
+          config: params => {
+            const {roIndex} = params
+            if (roIndex == 0) {
+              return {
+                type: 'el-input',
+                rules: [
+                  {
+                    required: true,
+                    message: '年龄不能为空',
+                    trigger: 'blur'
+                  },
+                  {
+                    pattern: /^[1-9]\d*$/,
+                    message: '只能填写正整数',
+                    trigger: 'blur'
+                  }
+                ]
               }
-            ]
+            }
           }
         }
       ]
@@ -176,9 +169,9 @@ export default {
 </script>
 ```
 
-<!-- * [doc and online demo](https://nemoisme.github.io/el-validate-table/) -->
-
 [⬆ Back to Top](#table-of-contents)
+
+<!-- * [doc and online demo](https://nemoisme.github.io/el-validate-table/) -->
 
 ## Install
 
