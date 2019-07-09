@@ -190,9 +190,9 @@ export default {
 
 [⬆ Back to Top](#table-of-contents)
 
-##Attributes
+## Attributes
 
-| props   | explain                                                    | type  |
+| params  | explain                                                    | type  |
 | ------- | ---------------------------------------------------------- | ----- |
 | data    | 匹配的数据，与 element-ui,el-table 用法相同                | Array |
 | columns | 列配置，支持 el-table-column 所有的配置项，格外扩展 config | Array |
