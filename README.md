@@ -33,9 +33,7 @@
 
 基于 2019-4 月初某项目背景，项目中含有大量的多级表头，单元格编辑，以及少许的拖拽表格。项目初期，tempalte 中存在大量的结构代码，难以迭代，难以维护，基于此背景，为了节省时间，减少重复冗余的代码，让开发者专注业务逻辑。
 
-**THANSK**
-
-在此,特别感谢我的启蒙老师和指导老师(明明),暂时不加连接 0.0
+<!-- **THANSK** -->
 
 [⬆ Back to Top](#table-of-contents)
 
@@ -189,6 +187,15 @@ export default {
 ## Example
 
 [⬆ Back to Top](#table-of-contents)
+
+[⬆ Back to Top](#table-of-contents)
+
+##Attributes
+
+| props   | explain                                                    | type  |
+| ------- | ---------------------------------------------------------- | ----- |
+| data    | 匹配的数据，与 element-ui,el-table 用法相同                | Array |
+| columns | 列配置，支持 el-table-column 所有的配置项，格外扩展 config | Array |
 
 ## Reference
 
