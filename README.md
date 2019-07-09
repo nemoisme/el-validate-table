@@ -10,8 +10,6 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/nemoisme/el-validate-table/pulls)
 [![Automated Release Notes by gren](https://img.shields.io/badge/%F0%9F%A4%96-release%20notes-00B2EE.svg)](https://github-tools.github.io/github-release-notes/)
 
-项目简要说明 + 示例图
-
 ## Table of Contents
 
 * [Introduction](#introduction)
@@ -32,6 +30,10 @@
 **WHY**
 
 基于 2019-4 月初某项目背景，项目中含有大量的多级表头，单元格编辑，以及少许的拖拽表格。项目初期，tempalte 中存在大量的结构代码，难以迭代，难以维护，基于此背景，为了节省时间，减少重复冗余的代码，让开发者专注业务逻辑。
+
+**THANSK**
+
+在此,特别感谢我的启蒙老师和指导老师(明明),暂时不加连接 0.0
 
 [⬆ Back to Top](#table-of-contents)
 
@@ -54,10 +56,7 @@
 </template>
 <script>
 export default {
-  name: 'validate-table-test',
-  components: {
-    'el-validate-table': () => import('@/components/el-validate-table/index')
-  },
+  name: 'demo',
   data() {
     return {
       data: [
@@ -177,7 +176,7 @@ export default {
 </script>
 ```
 
-* [doc and online demo](https://nemoisme.github.io/el-validate-table/)
+<!-- * [doc and online demo](https://nemoisme.github.io/el-validate-table/) -->
 
 [⬆ Back to Top](#table-of-contents)
 
