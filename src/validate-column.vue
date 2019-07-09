@@ -43,14 +43,14 @@ export default {
           let columnIndex
           len = col.children ? len : len + 1
           columnIndex = len - 1
-          console.log(col, this.columns, '对比1')
+          // console.log(col, this.columns, '对比1')
           return h(
             'el-table-column',
             {
               props: Object.assign({}, this.$attrs, col),
               scopedSlots: {
                 default: scope => {
-                  console.log(col, this.columns, '对比2')
+                  // console.log(col, this.columns, '对比2')
                   const params = {
                     roIndex: scope.$index,
                     row: scope.row,
@@ -66,7 +66,9 @@ export default {
                     style = {},
                     event = {}
                   } =
-                    (col.config && col.config) || {}
+                    typeof col.config == 'function'
+                      ? !!col.config(params) && col.config(params)
+                      : {}
 
                   const ele = type || col.render
                   const isVlid = Array.isArray(rules) && rules.length > 0
