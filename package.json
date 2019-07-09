@@ -34,7 +34,8 @@
   },
   "dependencies": {
     "element-ui": "^2.10.1",
-    "loadsh": "^0.0.4"
+    "loadsh": "^0.0.4",
+    "sortablejs": "^1.10.0-rc3"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
