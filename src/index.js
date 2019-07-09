@@ -5,7 +5,7 @@ import Component from './el-validate-table.vue'
 export function install(Vue) {
   if (install.installed) return
   install.installed = true
-  Vue.component('ElValidateTable', Component)
+  Vue.component('el-validate-table', Component)
 }
 
 // Create module definition for Vue.use()

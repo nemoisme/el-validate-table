@@ -1,6 +1,7 @@
 <script>
 import {get, set} from 'loadsh'
 import mixinOptionExtensions from './mixin-package-option.js'
+import {Table, TableColumn, Form, FormItem} from 'element-ui'
 let len = 0 // 全局变量  更正列索引
 
 /**
@@ -15,6 +16,11 @@ export const toCamelCase = str => {
 
 export default {
   name: 'validate-column',
+  components: {
+    'el-table': Table,
+    'el-form': Form,
+    'el-form-item': FormItem
+  },
   mixins: [mixinOptionExtensions],
   props: {
     columns: {
@@ -59,7 +65,8 @@ export default {
                     attrs = {},
                     style = {},
                     event = {}
-                  } = (col.config && col.config) || {}
+                  } =
+                    (col.config && col.config) || {}
 
                   const ele = type || col.render
                   const isVlid = Array.isArray(rules) && rules.length > 0

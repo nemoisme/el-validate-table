@@ -1,8 +1,9 @@
 <script>
+import ValidateColumn from './validate-column.vue'
 export default {
   name: 'el-validate-table',
   components: {
-    'validate-column': () => import('./validate-column')
+    'validate-column': ValidateColumn
   },
   props: {
     data: Array,
@@ -29,8 +30,6 @@ export default {
       .reduce((arr, key) => arr.concat(this.$slots[key]), [])
       .map(vnode => {
         // 更正vnode
-        debugger 
-        console.log(vnode, 'vnode')
         vnode.context = this._self
         return vnode
       })
