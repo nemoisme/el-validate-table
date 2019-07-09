@@ -19,7 +19,7 @@ module.exports = {
   styleguideDir: 'docs',
   pagePerSection: true,
   ribbon: {
-    url: 'https://github.com/nemo/el-validate-table'
+    url: 'https://github.com/nemoisme/el-validate-table'
   },
   sections: [
     {
@@ -58,8 +58,6 @@ module.exports = {
         }
       ]
     },
-    plugins: [
-      new VueLoaderPlugin()
-    ]
+    plugins: [new VueLoaderPlugin()]
   }
 }
