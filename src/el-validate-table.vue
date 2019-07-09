@@ -1,4 +1,5 @@
 <script>
+import Sortable from 'sortablejs'
 import ValidateColumn from './validate-column.vue'
 export default {
   name: 'el-validate-table',
@@ -7,7 +8,8 @@ export default {
   },
   props: {
     data: Array,
-    columns: Array
+    columns: Array,
+    isDrag: Boolean
   },
   data() {
     return {
@@ -29,7 +31,6 @@ export default {
     const slots = Object.keys(this.$slots)
       .reduce((arr, key) => arr.concat(this.$slots[key]), [])
       .map(vnode => {
-        // 更正vnode
         vnode.context = this._self
         return vnode
       })
@@ -69,6 +70,18 @@ export default {
       this.$attrs['span-method'] ||
       this.$attrs.spanMethod ||
       this.arraySpanMethod
+    // 行拖拽
+    const table = document.querySelector('.el-table__body-wrapper tbody')
+    if (!this.isDrag) return
+    Sortable.create(table, {
+      animation: 180,
+      delay: 0,
+      onEnd: ({newIndex, oldIndex}) => {
+        const targetRow = this.data.splice(oldIndex, 1)[0]
+        this.data.splice(newIndex, 0, targetRow)
+        this.$emit('drag-end', {from: targetRow, to: this.data[newIndex]})
+      }
+    })
   },
   methods: {
     rowspan() {
