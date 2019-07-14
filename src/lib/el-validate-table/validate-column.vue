@@ -51,7 +51,7 @@ export default {
                 default: scope => {
                   // console.log(col, this.columns, '对比2')
                   const params = {
-                    roIndex: scope.$index,
+                    rowIndex: scope.$index,
                     row: scope.row,
                     columnIndex,
                     prop: col.prop,

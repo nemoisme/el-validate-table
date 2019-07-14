@@ -105,8 +105,7 @@ export default {
             {
               prop: 'a',
               label: '省',
-              config: params => {
-                return {
+              config: params => ({
                   type: 'el-select',
                   rules: [
                     {
@@ -129,8 +128,7 @@ export default {
                       label: '广东'
                     }
                   ]
-                }
-              }
+                })
             },
             {
               prop: 'b',
@@ -142,8 +140,8 @@ export default {
           prop: 'old',
           label: '年龄',
           config: params => {
-            const {roIndex} = params
-            if (roIndex == 0) {
+            const {rowIndex} = params
+            if (rowIndex == 0) {
               return {
                 type: 'el-input',
                 rules: [
@@ -186,7 +184,7 @@ export default {
 ## Attributes
 
 | params                   | explain                                                            | type                                     |
-| ------------------------ | ------------------------------------------------------------------ | ---------------------------------------- |
+|--------------------------|--------------------------------------------------------------------|------------------------------------------|
 | data                     | 匹配的数据，与 element-ui,el-table 用法相同                        | Array                                    |
 | columns                  | 列配置，支持 el-table-column 所有的配置项，格外扩展 config         | Array                                    |
 | columns:item 下的 config | vnode 配置项，type->tag,rules->校验规则,other 类似 render 的配置项 | Function({type,rules,event,style,attrs}) |

@@ -1,6 +1,6 @@
 {
   "name": "el-validate-table",
-  "description": "A Vue.js project",
+  "description": "基于element-ui,封装的功能表格",
   "version": "1.0.0",
   "author": "nemoisme <nemo_ambitioner@163.com>",
   "license": "MIT",
