@@ -1,6 +1,6 @@
 # el-validate-table
 
-[⬆ Back to Top](#table-of-contents)
+[⬆ Back to Top](#目录)
 基于 element-ui 封装的可编辑，可校验，可合并的表格
 
 [![Build Status](https://travis-ci.com/nemoisme/el-validate-table.svg?branch=master)](https://travis-ci.com/nemoisme/el-validate-table)
@@ -14,37 +14,35 @@
 
 ## Table of Contents
 
-* [Introduction](#introduction)
-* [Feature](#feature)
-* [Demo](#demo)
-* [Install](#install)
-* [Example](#example)
-* [Reference](#reference)
-* [Contributors](#contributors)
-* [License](#license)
+* [介绍](#介绍)
+* [特点](#特点)
+* [示例](#示例)
+* [参数说明](#参数说明)
 
-## Introduction
 
-**WHAT**
+## 介绍
+
+**概要**
 
 `el-validate-table` 是基于[element-ui](https://github.com/ElemeFE/element)封装的**表格组件**,采用 vue 中的 render 函数写法，支持高度的可扩展性，可复用性，通过 JSON 配置即可实现，表格中的单元格编辑校验，多级表头，单元格合并，行，列拖拽等复杂功能。
 
-**WHY**
+**背景**
 
 基于 2019-4 月初某项目背景，项目中含有大量的多级表头，单元格编辑，以及少许的拖拽表格。项目初期，tempalte 中存在大量的结构代码，难以迭代，难以维护，基于此背景，为了节省时间，减少重复冗余的代码，让开发者专注业务逻辑。
 
 <!-- **THANSK** -->
 
-[⬆ Back to Top](#table-of-contents)
+[⬆ Back to Top](#目录)
 
-## Feature
+## 特点
 
 * 只需进行简单的配置，即可实现单元格编辑（可校验）,多级表头，单元格合并等复杂功能
+* 支持 _ElTable_,_ElTableColumn 的所有的接口
 * 支持单元格自定义校验
 
-[⬆ Back to Top](#table-of-contents)
+[⬆ Back to Top](#目录)
 
-## Demo
+## 示例
 
 1.基本用法
 
@@ -167,45 +165,40 @@ export default {
 </script>
 ```
 
-[⬆ Back to Top](#table-of-contents)
+[⬆ Back to Top](#目录)
 
 <!-- * [doc and online demo](https://nemoisme.github.io/el-validate-table/) -->
 
-## Install
 
-[⬆ Back to Top](#table-of-contents)
+## 参数说明
 
-## Example
+- 外部参数说明
 
-[⬆ Back to Top](#table-of-contents)
+| 参数    | 说明                                                       | 类型    |
+|---------|------------------------------------------------------------|---------|
+| data    | 匹配的数据，与 element-ui,el-table 用法相同                | Array   |
+| columns | 列配置，支持 el-table-column 所有的配置项，格外扩展 config | Array   |
+| isDrag  | 是否支持表格行拖拽                                         | Boolean |
 
-[⬆ Back to Top](#table-of-contents)
 
-## Attributes
+- columns 参数说明 
 
-| params                   | explain                                                            | type                                     |
-|--------------------------|--------------------------------------------------------------------|------------------------------------------|
-| data                     | 匹配的数据，与 element-ui,el-table 用法相同                        | Array                                    |
-| columns                  | 列配置，支持 el-table-column 所有的配置项，格外扩展 config         | Array                                    |
-| columns:item 下的 config | vnode 配置项，type->tag,rules->校验规则,other 类似 render 的配置项 | Function({type,rules,event,style,attrs}) |
+| 参数 | 说明 | 类型 |
+|-----|-----|------|
+| prop | 绑定的列字段 | string |
+| label | 列标题显示 | string |
+| children | 子级表头配置 | array |
+| render(h,params) | 自定义渲染元素 | function |
 
-## Reference
 
-[⬆ Back to Top](#table-of-contents)
+- config(rowIndex,row,columnIndex,prop,column) 配置说明
 
-## Contributors
+| 参数 | 说明 | 类型 |
+|-----|----|
+| type | 渲染的元素tag or 组件的name | stirng |
+| rules | 对表单元素的校验 | array |
+| event | 事件 | object |
+| style | 样式 | object |
+| attrs | 外部参数 | object |
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-
-<!-- prettier-ignore -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
-[⬆ Back to Top](#table-of-contents)
-
-## License
-
-[MIT](./LICENSE)
+[⬆ Back to Top](#目录)
