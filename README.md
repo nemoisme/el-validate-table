@@ -12,7 +12,7 @@
 
 ![07月-09-2019](./assets/demo2.jpg)
 
-## Table of Contents
+## 目录
 
 * [介绍](#介绍)
 * [特点](#特点)
@@ -183,22 +183,22 @@ export default {
 
 - columns 参数说明 
 
-| 参数 | 说明 | 类型 |
-|-----|-----|------|
-| prop | 绑定的列字段 | string |
-| label | 列标题显示 | string |
-| children | 子级表头配置 | array |
+| 参数             | 说明           | 类型     |
+|------------------|----------------|----------|
+| prop             | 绑定的列字段   | string   |
+| label            | 列标题显示     | string   |
+| children         | 子级表头配置   | array    |
 | render(h,params) | 自定义渲染元素 | function |
 
 
 - config(rowIndex,row,columnIndex,prop,column) 配置说明
 
-| 参数 | 说明 | 类型 |
-|-----|----|
-| type | 渲染的元素tag or 组件的name | stirng |
-| rules | 对表单元素的校验 | array |
-| event | 事件 | object |
-| style | 样式 | object |
-| attrs | 外部参数 | object |
+| 参数  | 说明                        | 类型   |
+|-------|-----------------------------|--------|
+| type  | 渲染的元素tag or 组件的name | stirng |
+| rules | 对表单元素的校验            | array  |
+| event | 事件                        | object |
+| style | 样式                        | object |
+| attrs | 外部参数                    | object |
 
 [⬆ Back to Top](#目录)
