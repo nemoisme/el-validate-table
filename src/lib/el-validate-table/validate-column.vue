@@ -1,20 +1,20 @@
 <script>
-import {get, set} from 'loadsh'
-import mixinOptionExtensions from './mixin-package-option.js'
-let len = 0 // 全局变量  更正列索引
+import { get, set } from "loadsh";
+import mixinOptionExtensions from "./mixin-package-option.js";
+let len = 0; // 全局变量  更正列索引
 
 /**
  * 转换为大小驼峰命名
  * abc-efg => abcEfg
  */
 export const toCamelCase = str => {
-  return str.indexOf('-') !== -1
+  return str.indexOf("-") !== -1
     ? str.replace(/-([a-zA-Z])/g, ($0, $1) => $1.toUpperCase())
-    : str
-}
+    : str;
+};
 
 export default {
-  name: 'validate-column',
+  name: "validate-column",
   mixins: [mixinOptionExtensions],
   props: {
     columns: {
@@ -24,31 +24,29 @@ export default {
     data: Array
   },
   data() {
-    return {}
+    return {};
   },
   render(h) {
-    return h('div', this.renderColumns(h, this.columns))
+    return h("div", this.renderColumns(h, this.columns));
   },
   methods: {
     renderColumns(h, columns) {
       return (
         columns &&
         columns.map((col, index) => {
-          let columnIndex
-          len = col.children ? len : len + 1
-          columnIndex = len - 1
+          let columnIndex;
+          len = col.children ? len : len + 1;
+          columnIndex = len - 1;
           // console.log(col, this.columns, '对比1')
           const scopedSlots = {
             default: scope => {
-              
               const params = {
                 rowIndex: scope.$index,
                 row: scope.row,
                 columnIndex,
                 prop: col.prop,
                 column: scope.column
-              }
-              
+              };
               const {
                 type = null,
                 rules = [],
@@ -57,16 +55,16 @@ export default {
                 style = {},
                 event = {}
               } =
-                typeof col.config == 'function'
+                typeof col.config == "function"
                   ? !!col.config(params) && col.config(params)
-                  : {}
+                  : {};
 
-              const ele = type || col.render
-              const isFormItem = Array.isArray(rules) && rules.length > 0
+              const ele = type;
+              const isFormItem = Array.isArray(rules) && rules.length > 0;
 
               return !!ele
                 ? h(
-                    isFormItem ? 'el-form-item' : 'div',
+                    isFormItem ? "el-form-item" : "div",
                     {
                       props: {
                         prop: `data[${scope.$index}].${col.prop}`,
@@ -89,7 +87,7 @@ export default {
                               input: val => {
                                 get(scope.row, col.prop) === undefined
                                   ? this.$set(scope.row, col.prop, val)
-                                  : set(scope.row, col.prop, val)
+                                  : set(scope.row, col.prop, val);
                               }
                             },
                             event
@@ -106,12 +104,14 @@ export default {
                       get(scope.row, col.prop),
                       scope.$index
                     )) ||
-                    get(scope.row, col.prop)
+                    (typeof col.render == "function" &&
+                      col.render(h, params)) ||
+                    get(scope.row, col.prop);
             }
-          }
+          };
 
           return h(
-            'el-table-column',
+            "el-table-column",
             {
               props: Object.assign({}, this.$attrs, col),
               key: index,
@@ -120,17 +120,17 @@ export default {
             col.children &&
               col.children.length !== 0 &&
               this.renderColumns(h, col.children)
-          )
+          );
         })
-      )
+      );
     },
     renderOps(type, options) {
-      const optType = type && type.indexOf('el-') === 0 ? type.slice(3) : type
-      let optRenderer = optType && this[`${toCamelCase(optType)}_opt`]
-      if (typeof optRenderer === 'function' && Array.isArray(options)) {
-        return options.map(optRenderer)
+      const optType = type && type.indexOf("el-") === 0 ? type.slice(3) : type;
+      let optRenderer = optType && this[`${toCamelCase(optType)}_opt`];
+      if (typeof optRenderer === "function" && Array.isArray(options)) {
+        return options.map(optRenderer);
       }
     }
   }
-}
+};
 </script>
