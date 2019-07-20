@@ -1,13 +1,11 @@
 <script>
-import Sortable from "sortablejs";
-import VlidateColumn from "./validate-column";
-import { Form, Table } from "element-ui";
+import Sortable from 'sortablejs'
+import Form from 'element-ui/lib/form'
+import Table from 'element-ui/lib/table'
 export default {
-  name: "el-validate-table",
+  name: 'el-validate-table',
   components: {
-    "validate-column": VlidateColumn,
-    "el-form": Form,
-    "el-table": Table
+    'validate-column': () => import('./validate-column')
   },
   props: {
     data: Array,
@@ -18,15 +16,15 @@ export default {
     return {
       spanObject: {},
       customSpanMethod: () => {}
-    };
+    }
   },
   watch: {
     data: {
-      handler: "rowspan",
+      handler: 'rowspan',
       immediate: true
     },
     columns: {
-      handler: "rowspan",
+      handler: 'rowspan',
       immediate: true
     }
   },
@@ -34,109 +32,122 @@ export default {
     const slots = Object.keys(this.$slots)
       .reduce((arr, key) => arr.concat(this.$slots[key]), [])
       .map(vnode => {
-        vnode.context = this._self;
-        return vnode;
-      });
+        vnode.context = this._self
+        return vnode
+      })
 
     return h(
-      "el-form",
+      'el-form',
       {
         props: {
           model: {
             data: this.data
           }
-        }
+        },
+        ref: 'elForm'
       },
       [
         h(
-          "el-table",
+          'el-table',
           {
             props: Object.assign({}, this.$attrs, {
               data: this.data,
-              "span-method": this.customSpanMethod
-            })
+              'span-method': this.customSpanMethod
+            }),
+            ref: 'elTable'
           },
           [
-            h("validate-column", {
+            h('validate-column', {
               props: Object.assign({}, this.$attrs, {
                 columns: this.columns,
                 data: this.data
               })
             })
-          ].concat(slots)
+          ].concat(slots || [])
         )
       ]
-    );
+    )
   },
   mounted() {
     this.customSpanMethod =
-      this.$attrs["span-method"] ||
+      this.$attrs['span-method'] ||
       this.$attrs.spanMethod ||
-      this.arraySpanMethod;
+      this.arraySpanMethod
+    // 同步form,table中的mehods
+    this.$nextTick(() => {
+      const methods = Object.assign({}, Form.methods, Table.methods)
+      Object.keys(methods).forEach(key => {
+        if (this.$refs.elForm.hasOwnProperty(key)) {
+          this[key] = this.$refs.elForm[key]
+        } else {
+          this[key] = this.$refs.elTable[key]
+        }
+      })
+    })
     // 行拖拽
-    const table = document.querySelector(".el-table__body-wrapper tbody");
-    if (!this.isDrag) return;
+    const table = document.querySelector('.el-table__body-wrapper tbody')
+    if (!this.isDrag) return
     Sortable.create(table, {
       animation: 180,
       delay: 0,
-      onEnd: ({ newIndex, oldIndex }) => {
-        const targetRow = this.data.splice(oldIndex, 1)[0];
-        this.data.splice(newIndex, 0, targetRow);
+      onEnd: ({newIndex, oldIndex}) => {
+        const targetRow = this.data.splice(oldIndex, 1)[0]
+        this.data.splice(newIndex, 0, targetRow)
       }
-    });
+    })
   },
   methods: {
     rowspan() {
-      const data = this.data;
+      const data = this.data
 
       const getSpanObject = (arr, con = {}) => {
         return arr.reduce((sum, col) => {
           if (col.children && col.children.length) {
-            getSpanObject(col.children, sum);
-            return sum;
+            getSpanObject(col.children, sum)
+            return sum
           }
 
           if (!col.isMerge) {
-            return sum;
+            return sum
           }
 
-          sum[col.prop] = [];
+          sum[col.prop] = []
 
-          let position;
-          let spanArr = sum[col.prop];
+          let position
+          let spanArr = sum[col.prop]
 
           Array.isArray(data) &&
             data.forEach((item, index) => {
               if (index === 0) {
-                spanArr.push(1);
-                position = 0;
+                spanArr.push(1)
+                position = 0
               } else {
                 if (data[index][col.prop] === data[index - 1][col.prop]) {
-                  spanArr[position] += 1;
-                  spanArr.push(0);
+                  spanArr[position] += 1
+                  spanArr.push(0)
                 } else {
-                  spanArr.push(1);
-                  position = index;
+                  spanArr.push(1)
+                  position = index
                 }
               }
-            });
-          return sum;
-        }, con);
-      };
+            })
+          return sum
+        }, con)
+      }
 
-      this.spanObject = getSpanObject(this.columns);
+      this.spanObject = getSpanObject(this.columns)
     },
-    arraySpanMethod({ row, column, rowIndex, columnIndex }) {
-      const spanArr = this.spanObject[column.property];
+    arraySpanMethod({row, column, rowIndex, columnIndex}) {
+      const spanArr = this.spanObject[column.property]
       if (spanArr) {
-        const _row = spanArr[rowIndex];
-        const _col = _row > 0 ? 1 : 0;
+        const _row = spanArr[rowIndex]
+        const _col = _row > 0 ? 1 : 0
         return {
           rowspan: _row,
           colspan: _col
-        };
+        }
       }
     }
   }
-};
+}
 </script>
