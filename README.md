@@ -1,14 +1,6 @@
 # el-validate-table
 
-[⬆ Back to Top](#目录)
 基于 element-ui 封装的可编辑，可校验，可合并的表格
-
-[![Build Status](https://travis-ci.com/nemoisme/el-validate-table.svg?branch=master)](https://travis-ci.com/nemoisme/el-validate-table)
-[![NPM Download](https://img.shields.io/npm/dm/@nemoisme/el-validate-table.svg)](https://www.npmjs.com/package/@nemoisme/el-validate-table)
-[![NPM Version](https://img.shields.io/npm/v/@nemoisme/el-validate-table.svg)](https://www.npmjs.com/package/@nemoisme/el-validate-table)
-[![NPM License](https://img.shields.io/npm/l/@nemoisme/el-validate-table.svg)](https://github.com/nemoisme/el-validate-table/blob/master/LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/nemoisme/el-validate-table/pulls)
-[![Automated Release Notes by gren](https://img.shields.io/badge/%F0%9F%A4%96-release%20notes-00B2EE.svg)](https://github-tools.github.io/github-release-notes/)
 
 ![07月-09-2019](./assets/demo2.jpg)
 
@@ -189,6 +181,7 @@ export default {
 | label            | 列标题显示     | string   |
 | children         | 子级表头配置   | array    |
 | render(h,params) | 自定义渲染元素 | function |
+| component        | 自定义组件     | vnode    |
 
 
 - config(rowIndex,row,columnIndex,prop,column) 配置说明
