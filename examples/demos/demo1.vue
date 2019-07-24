@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: 'demo1',
+  name: 'validate-table-test',
   data() {
     return {
       data: [
@@ -54,8 +54,7 @@ export default {
             {
               prop: 'a',
               label: '省',
-              config: params => {
-                return {
+              config: params => ({
                   type: 'el-select',
                   rules: [
                     {
@@ -78,8 +77,7 @@ export default {
                       label: '广东'
                     }
                   ]
-                }
-              }
+                })
             },
             {
               prop: 'b',
@@ -91,8 +89,8 @@ export default {
           prop: 'old',
           label: '年龄',
           config: params => {
-            const {roIndex} = params
-            if (roIndex == 0) {
+            const {rowIndex} = params
+            if (rowIndex == 0) {
               return {
                 type: 'el-input',
                 rules: [
