@@ -1,6 +1,5 @@
 var path = require("path");
 var webpack = require("webpack");
-
 module.exports = {
   dev: {
     entry: path.resolve(__dirname, "/examples/main.js"),
@@ -17,47 +16,16 @@ module.exports = {
     }
   },
   build: {
-    entry: "./src/lib/index.js",
+    entry: path.resolve(__dirname, "packages/index"),
     output: {
-      path: path.resolve(__dirname, "./dist"),
+      path: path.resolve(__dirname, "/dist"),
       publicPath: "/dist/",
       filename: "el-validate-table.js",
       library: "ElValidateTable",
       libraryTarget: "umd",
       umdNamedDefine: true
     },
-    module: {
-      rules: [
-        {
-          test: /\.css$/,
-          use: ["vue-style-loader", "css-loader"]
-        },
-        {
-          test: /\.vue$/,
-          loader: "vue-loader",
-          options: {
-            loaders: {}
-            // other vue-loader options go here
-          }
-        },
-        {
-          test: /\.sass$/,
-          use: ["vue-style-loader", "css-loader", "sass-loader?indentedSyntax"]
-        },
-        {
-          test: /\.js$/,
-          loader: "babel-loader",
-          exclude: /node_modules/
-        },
-        {
-          test: /\.(png|jpg|gif|svg)$/,
-          loader: "file-loader",
-          options: {
-            name: "[name].[ext]?[hash]"
-          }
-        }
-      ]
-    },
+
     resolve: {
       alias: {
         vue$: "vue/dist/vue.esm.js"
@@ -74,12 +42,43 @@ module.exports = {
     },
     devtool: "#eval-source-map"
   },
-
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["vue-style-loader", "css-loader"]
+      },
+      {
+        test: /\.vue$/,
+        loader: "vue-loader",
+        options: {
+          loaders: {}
+          // other vue-loader options go here
+        }
+      },
+      {
+        test: /\.sass$/,
+        use: ["vue-style-loader", "css-loader", "sass-loader?indentedSyntax"]
+      },
+      {
+        test: /\.js$/,
+        loader: "babel-loader",
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]?[hash]"
+        }
+      }
+    ]
+  }
 };
 
 if (process.env.NODE_ENV === "production") {
-  config.devtool = "#source-map";
-  config.plugins = (config.plugins  || []).concat([
+  module.exports.devtool = "#source-map";
+  module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: '"production"'
@@ -102,8 +101,7 @@ if (process.env.NODE_ENV === "production") {
         warnings: false
       }
     })
-    
   ]);
 }
 
-module.exports = config;
+module.exports;
