@@ -68,22 +68,24 @@ export default {
       ]
     )
   },
-  mounted() {
+  async mounted() {
     this.customSpanMethod =
       this.$attrs['span-method'] ||
       this.$attrs.spanMethod ||
       this.arraySpanMethod
-    // 同步form,table中的mehods
-    this.$nextTick(() => {
-      const methods = Object.assign({}, Form.methods, Table.methods)
-      Object.keys(methods).forEach(key => {
-        if (this.$refs.elForm.hasOwnProperty(key)) {
-          this[key] = this.$refs.elForm[key]
-        } else {
-          this[key] = this.$refs.elTable[key]
-        }
-      })
+  
+    await this.$nextTick(() => {})
+
+      // 同步form,table中的mehods
+    const methods = Object.assign({}, Form.methods, Table.methods)
+    Object.keys(methods).forEach(key => {
+      if (this.$refs.elForm.hasOwnProperty(key)) {
+        this[key] = this.$refs.elForm[key]
+      } else {
+        this[key] = this.$refs.elTable[key]
+      }
     })
+
     // 行拖拽
     const table = document.querySelector('.el-table__body-wrapper tbody')
     if (!this.isDrag) return

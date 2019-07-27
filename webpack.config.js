@@ -17,20 +17,13 @@ module.exports = {
   },
   build: {
     entry: path.resolve(__dirname, "packages/index"),
+    mode:'production',
     output: {
       path: path.resolve(__dirname, "/dist"),
-      publicPath: "/dist/",
       filename: "el-validate-table.js",
       library: "ElValidateTable",
       libraryTarget: "umd",
       umdNamedDefine: true
-    },
-
-    resolve: {
-      alias: {
-        vue$: "vue/dist/vue.esm.js"
-      },
-      extensions: ["*", ".js", ".vue", ".json"]
     },
     devServer: {
       historyApiFallback: true,
@@ -104,4 +97,4 @@ if (process.env.NODE_ENV === "production") {
   ]);
 }
 
-module.exports;
+module.exports
