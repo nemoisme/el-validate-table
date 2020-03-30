@@ -1,0 +1,37 @@
+{
+  "name": "el-validate-table",
+  "version": "1.0.1",
+  "private": false,
+  "description": "a lib about table base on element-ui",
+  "main": "lib/el-validate-table.umd.min.js",
+  "license": "MIT",
+  "author": "nemoisme<nemo_ambitioner@163.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nemoisme/el-validate-table.git"
+  },
+  "keyword": [
+    "vue",
+    "element-ui"
+  ],
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name el-validate-table --dest lib packages/index.js"
+  },
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "element-ui": "^2.13.0",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.2.0",
+    "@vue/cli-service": "^4.2.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
