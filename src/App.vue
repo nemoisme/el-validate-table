@@ -1,45 +1,80 @@
 <template>
-  <div id="app">
-    <el-validate-table :data="data" :columns="columns" />
+  <div class="validate-table-demo1">
+    <h2>validate-table-demo1</h2>
+    <el-validate-table :data="data" :columns="columns" ref="validateTable" border />
+    <el-button type="primary" @click="btnValidate">校验触发</el-button>
   </div>
 </template>
-
 <script>
-
 export default {
-  name: "App",
-  components: {
-  },
+  name: "validate-table-demo1",
   data() {
     return {
-      data:[
+      data: [
         {
-          a:1,
-          b:2
-        }
-      ],
-      columns:[
-        {
-          label:'测试1',
-          prop:'a'
+          name: "Nemo",
+          sex: "男",
+          col: 1,
+          row: 1
         },
         {
-          label:'测试2',
-          prop:'b'
+          name: "Anna",
+          sex: "女",
+          col: 1,
+          row: 1
+        },
+        {
+          name: "Jack",
+          sex: "男",
+          col: 1,
+          row: 1
+        },
+        {
+          row: "row合并",
+          row: 1
+        },
+        {
+          col: "col合并",
+          col: 1
+        }
+      ],
+      columns: [
+        {
+          label: "姓名",
+          prop: "name",
+          config: params => ({
+            type: "input",
+            rules: [
+              {
+                required: true,
+                message: "不能为空",
+                trigger: "blur"
+              }
+            ]
+          })
+        },
+        {
+          label: "性别",
+          prop: "sex"
+        },
+        {
+          label: "行合并",
+          prop: "row",
+          colMerge: true
+        },
+        {
+          label: "列合并",
+          prop: "col",
+          colMerge: true
         }
       ]
-    }
+    };
   },
+  methods: {
+    btnValidate() {
+      this.$refs.validateTable.validate(valid => {});
+    }
+  }
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

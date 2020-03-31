@@ -2,7 +2,8 @@
 import Form from "element-ui/lib/form";
 import Table from "element-ui/lib/table";
 
-import { get, set } from "lodash";
+import get from 'lodash.get'
+import set from 'lodash.set'
 import mixinOptionExtensions from "./mixin-package-option.js";
 let len = 0; // 全局变量  更正列索引
 
@@ -209,10 +210,10 @@ export default {
                       props: {
                         prop: `data[${scope.$index}].${col.prop}`,
                         rules
+                      },
+                      style: {
+                        marginBottom: 0
                       }
-                      // style: {
-                      //   marginBottom: 0
-                      // }
                     },
                     [
                       h(
@@ -279,7 +280,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style>
 .el-form-item {
   margin-bottom: 0;
 }

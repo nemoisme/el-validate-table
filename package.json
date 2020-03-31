@@ -10,9 +10,14 @@
     "type": "git",
     "url": "https://github.com/nemoisme/el-validate-table.git"
   },
-  "keyword": [
+  "keywords": [
     "vue",
-    "element-ui"
+    "element-ui",
+    "el-validate-table"
+  ],
+  "files": [
+    "packages",
+    "lib"
   ],
   "scripts": {
     "dev": "vue-cli-service serve",
@@ -21,8 +26,11 @@
     "lib": "vue-cli-service build --target lib --name el-validate-table --dest lib packages/index.js"
   },
   "dependencies": {
+    "babel-plugin-component": "^1.1.1",
     "core-js": "^3.6.4",
     "element-ui": "^2.13.0",
+    "lodash.get": "^4.4.2",
+    "lodash.set": "^4.3.2",
     "vue": "^2.6.11"
   },
   "devDependencies": {
