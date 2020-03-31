@@ -1,8 +1,8 @@
 <script>
 import Form from "element-ui/lib/form";
 import Table from "element-ui/lib/table";
-import get from 'lodash.get'
-import set from 'lodash.set'
+import get from "lodash.get";
+import set from "lodash.set";
 import mixinOptionExtensions from "./mixin-package-option.js";
 let len = 0; // 全局变量  更正列索引
 
@@ -10,7 +10,7 @@ let len = 0; // 全局变量  更正列索引
  * 转换为大小驼峰命名
  * abc-efg => abcEfg
  */
-export const toCamelCase = str => {
+const toCamelCase = str => {
   return str.indexOf("-") !== -1
     ? str.replace(/-([a-zA-Z])/g, ($0, $1) => $1.toUpperCase())
     : str;
@@ -170,10 +170,8 @@ export default {
           let columnIndex;
           len = col.children ? len : len + 1;
           columnIndex = len - 1;
-          // console.log(col, this.columns, '对比1')
           const scopedSlots = {
             default: scope => {
-              // console.log(scope, 'scope')
               const params = {
                 rowIndex: scope.$index,
                 row: scope.row,

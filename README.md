@@ -20,7 +20,7 @@ yarn add el-validate-table
 
 **概要**
 
-`el-validate-table` 是基于[element-ui](https://github.com/ElemeFE/element)封装的**表格组件**,采用 vue 中的 render 函数写法，支持高度的可扩展性，可复用性，通过 JSON 配置即可实现，表格中的单元格编辑校验，多级表头，单元格合并，行，列拖拽等复杂功能。
+`el-validate-table` 是基于[element-ui](https://github.com/ElemeFE/element)封装的**表格组件**,采用 vue 中的 render 函数写法，支持高度的可扩展性，可复用性，通过 JSON 配置即可实现，表格中的单元格编辑校验，多级表头，单元格合并。
 
 **背景**
 
@@ -36,6 +36,7 @@ yarn add el-validate-table
 * 支持 _ElTable_, _ElTableColumn_ 的所有的接口
 * 支持单元格自定义校验
 * 单元格支持自定义组件渲染
+* 体验良好的校验交互
 
 [⬆ Back to Top](#目录)
 
