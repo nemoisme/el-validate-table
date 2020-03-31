@@ -1,7 +1,6 @@
 <script>
 import Form from "element-ui/lib/form";
 import Table from "element-ui/lib/table";
-
 import get from 'lodash.get'
 import set from 'lodash.set'
 import mixinOptionExtensions from "./mixin-package-option.js";

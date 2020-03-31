@@ -42,16 +42,18 @@ export default {
         {
           label: "姓名",
           prop: "name",
-          config: params => ({
-            type: "input",
-            rules: [
-              {
-                required: true,
-                message: "不能为空",
-                trigger: "blur"
-              }
-            ]
-          })
+          config: params => {
+            return ({
+              type: "input",
+              rules: [
+                {
+                  required: true,
+                  message: "不能为空",
+                  trigger: "blur"
+                }
+              ]
+            });
+          }
         },
         {
           label: "性别",
