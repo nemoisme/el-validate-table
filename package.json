@@ -1,6 +1,6 @@
 {
   "name": "el-validate-table",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": false,
   "description": "a lib about table base on element-ui",
   "main": "lib/el-validate-table.umd.min.js",
