@@ -278,10 +278,10 @@ export default {
 };
 </script>
 <style>
-.el-form-item {
+.el-table .el-form-item {
   margin-bottom: 0;
 }
-.is-error {
+.el-table .is-error {
   animation: errvalid 0.5s;
   animation-fill-mode: forwards;
 }
@@ -293,7 +293,7 @@ export default {
     margin-bottom: 22px;
   }
 }
-.is-success {
+.el-table .is-success {
   animation: sucvalid 0.5s;
   animation-fill-mode: forwards;
 }
