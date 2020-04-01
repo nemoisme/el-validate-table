@@ -1,5 +1,5 @@
 <template>
-  <div class="validate-table-demo1">
+  <div>
     <h2>validate-table-demo1</h2>
     <el-validate-table :data="data" :columns="columns" ref="validateTable" border />
     <el-button type="primary" @click="btnValidate">校验触发</el-button>
@@ -42,18 +42,16 @@ export default {
         {
           label: "姓名",
           prop: "name",
-          config: params => {
-            return ({
-              type: "input",
-              rules: [
-                {
-                  required: true,
-                  message: "不能为空",
-                  trigger: "blur"
-                }
-              ]
-            });
-          }
+          config: params => ({
+            type: "input",
+            rules: [
+              {
+                required: true,
+                message: "不能为空",
+                trigger: "blur"
+              }
+            ]
+          })
         },
         {
           label: "性别",
@@ -80,3 +78,6 @@ export default {
 };
 </script>
 
+
+
+    
