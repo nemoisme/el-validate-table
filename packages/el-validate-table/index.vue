@@ -29,7 +29,6 @@ export default {
   props: {
     data: Array,
     columns: Array,
-    isDrag: Boolean
   },
   data() {
     return {
