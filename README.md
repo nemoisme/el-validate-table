@@ -5,7 +5,7 @@
 ![07月-09-2019](./assets/demo2.jpg)
 
 ```sh
-yarn add el-validate-table
+yarn add el-validate-table or npm i el-validate-table
 ```
 
 ## 目录
@@ -24,7 +24,7 @@ yarn add el-validate-table
 
 **背景**
 
-基于 2019-4 月初某项目背景，项目中含有大量的多级表头，单元格编辑，以及少许的拖拽表格。项目初期，tempalte 中存在大量的结构代码，难以迭代，难以维护，基于此背景，为了节省时间，减少重复冗余的代码，让开发者专注业务逻辑。
+基于 2019-4 月初某项目背景，项目中含有大量的多级表头，单元格编辑。项目初期，tempalte 中存在大量的结构代码，难以迭代，难以维护，基于此背景，为了节省时间，减少重复冗余的代码，让开发者专注业务逻辑。
 
 <!-- **THANSK** -->
 
@@ -33,7 +33,7 @@ yarn add el-validate-table
 ## 特点
 
 * 只需进行简单的配置，即可实现单元格编辑（可校验）,多级表头，单元格合并等复杂功能
-* 支持 _ElTable_, _ElTableColumn_ 的所有的接口
+* 支持 _ElTable_, _ElTableColumn_ 的所有的API
 * 支持单元格自定义校验
 * 单元格支持自定义组件渲染
 * 体验良好的校验交互
@@ -176,28 +176,28 @@ export default {
 |---------|------------------------------------------------------------|---------|
 | data    | 匹配的数据，与 element-ui,el-table 用法相同                | Array   |
 | columns | 列配置，支持 el-table-column 所有的配置项，格外扩展 config | Array   |
-| isDrag  | 是否支持表格行拖拽                                         | Boolean |
 
 
 - columns 参数说明 
 
 | 参数             | 说明           | 类型     |
-|------------------|----------------|----------|
+|--------------------------|------------------------------------|----------|
 | prop             | 绑定的列字段   | string   |
 | label            | 列标题显示     | string   |
 | children         | 子级表头配置   | array    |
 | render(h,params) | 自定义渲染元素 | function |
 | component        | 自定义组件     | vnode    |
-
+| formatter        | 格式化列单元格数据 | function |
 
 - config(rowIndex,row,columnIndex,prop,column) 配置说明
 
 | 参数  | 说明                        | 类型   |
-|-------|-----------------------------|--------|
+|----------------------|--------------------------------------|-----------|
 | type  | 渲染的元素tag or 组件的name | stirng |
 | rules | 对表单元素的校验            | array  |
 | event | 事件                        | object |
 | style | 样式                        | object |
 | attrs | 外部参数                    | object |
+| ...other | Form-Item Attributes     | any |
 
 [⬆ Back to Top](#目录)
