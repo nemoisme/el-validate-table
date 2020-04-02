@@ -1,9 +1,10 @@
 <script>
-import Form from "element-ui/lib/form";
-import Table from "element-ui/lib/table";
+import FormLib from "element-ui/lib/form";
+import TableLib from "element-ui/lib/table";
 import get from "lodash.get";
 import set from "lodash.set";
 import mixinOptionExtensions from "./mixin-package-option.js";
+import { Form, FormItem, Table, TableColumn } from "element-ui";
 let len = 0; // 全局变量  更正列索引
 
 /**
@@ -19,7 +20,10 @@ const toCamelCase = str => {
 export default {
   name: "el-validate-table",
   components: {
-    // "validate-column": () => import("./validate-column")
+    "el-form": Form,
+    "el-form-item": FormItem,
+    "el-table": Table,
+    "el-table-column": TableColumn
   },
   mixins: [mixinOptionExtensions],
   props: {
@@ -97,7 +101,7 @@ export default {
     await this.$nextTick(() => {});
 
     // 同步form,table中的mehods
-    const methods = Object.assign({}, Form.methods, Table.methods);
+    const methods = Object.assign({}, FormLib.methods, TableLib.methods);
     Object.keys(methods).forEach(key => {
       if (this.$refs.elForm.hasOwnProperty(key)) {
         this[key] = this.$refs.elForm[key];
